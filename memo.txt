@@ -1,3 +1,4 @@
+
 team memo
 -service platform
 
@@ -32,3 +33,5 @@ team memo
 - db (양정훈)
 - server연동(양정훈)
 - 디자인
+
+
