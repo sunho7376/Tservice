@@ -1,0 +1,19 @@
+clone 오류로 실행이 되지 않을 경우
+
+build.gradle파일에
+android {} block 안에
+useLibrary 'org.apache.http.legacy'
+추가
+
+AndroidManifest.xml파일에
+manifest <> block 안에
+<uses-permission android:name="android.permission.INTERNET">
+추가
+
+CallBackListener.java
+Query.java
+파일 그대로 java소스 폴더에 추가
+
+하시면 실행됩니다.
+
+https://github.com/sunho7376/Tservice/commit/f3c6fe85dd40d6547cfaaff4668ab670032c1067
