@@ -6,25 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    EditText idEditText;
+    EditText pwEditText;
+    Button loginBtn;
+    Button registerBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText edUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText edPassword = (EditText) findViewById(R.id.etPassword);
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
-        final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);
+        idEditText = (EditText)findViewById(R.id.idEditText);
+        pwEditText = (EditText)findViewById(R.id.pwEditText);
+        loginBtn = (Button)findViewById(R.id.loginBtn);
+        registerBtn = (Button)findViewById(R.id.registerBtn);
 
-        registerLink.setOnClickListener(new View.OnClickListener() {
+        registerBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick (View v) {
                 Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                MainActivity.this.startActivity(registerIntent);
+                startActivity(registerIntent);
             }
         });
     }
