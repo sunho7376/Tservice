@@ -18,7 +18,6 @@ place : 공연 장소
 cost : 공연 가격(32000)
 link : 공연 홈페이지 링크(text, https://www.naver.com)
 memo : 메모 내용
-picture : 업로드한 이미지 링크(text, https://www.naver.com)
 sellout : 판매 여부(boolean, 0, 1)
 post_datetime : 글 쓴 날짜, 시간(2016-11-23 21:30:41)
 buyer_pk : 구매자 primary key
@@ -29,4 +28,3 @@ pw : 유저 password
 name : 유저 이름
 contact : 유저 연락처(text, 010-1234-5678)
 address : 유저 주소
-picture : 유저 이미지 링크(text, https://www.naver.com)
