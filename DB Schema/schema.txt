@@ -1,0 +1,32 @@
+message_open : 쪽지 테이블
+sender_pk : 보내는이 primary key
+receiver_pk : 받는이 primary key
+title : 쪽지 제목
+content : 쪽지 내용
+datetime : 쪽지 보낸 날짜, 시간(2016-11-23 21:30:41)
+
+pick_open : 장바구니 테이블
+user_pk : 사용자 primary key
+post_pk : 장바구니 넣은 글 primary key
+
+post_open : 글 테이블
+user_pk : 글쓴이 primary key
+title : 글 제목
+name : 공연 이름
+show_datetime : 공연 날짜, 시간(2016-11-23 21:30:41)
+place : 공연 장소
+cost : 공연 가격(32000)
+link : 공연 홈페이지 링크(text, https://www.naver.com)
+memo : 메모 내용
+picture : 업로드한 이미지 링크(text, https://www.naver.com)
+sellout : 판매 여부(boolean, 0, 1)
+post_datetime : 글 쓴 날짜, 시간(2016-11-23 21:30:41)
+buyer_pk : 구매자 primary key
+
+user_open : 유저 primary key
+user_id : 유저 id
+pw : 유저 password
+name : 유저 이름
+contact : 유저 연락처(text, 010-1234-5678)
+address : 유저 주소
+picture : 유저 이미지 링크(text, https://www.naver.com)
