@@ -3,10 +3,14 @@ package com.example.tservice.tservice;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -31,15 +35,25 @@ public class RegisterActivity extends AppCompatActivity
         addressEditText = (EditText)findViewById(R.id.addressEditText);
         registerBtn = (Button)findViewById(R.id.registerBtn);
 
+        idEditText.setFilters(new InputFilter[] {filterAlphaNum});
+        idEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
+        pwEditText.setFilters(new InputFilter[] {filterAlphaNum});
+        pwEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
+        nameEditText.setFilters(new InputFilter[] {filterSpace});
+        nameEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(16)});
+        contactEditText.setFilters(new InputFilter[] {filterContact});
+        contactEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
+        addressEditText.setFilters(new InputFilter[] {filterSpace});
+
         registerBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick (View v) {
                 if (!(
-                    idEditText.getText().toString().trim().equals("") ||
-                    pwEditText.getText().toString().trim().equals("") ||
-                    nameEditText.getText().toString().trim().equals("") ||
-                    contactEditText.getText().toString().trim().equals("") ||
-                    addressEditText.getText().toString().trim().equals("")
+                    idEditText.getText().toString().equals("") ||
+                    pwEditText.getText().toString().equals("") ||
+                    nameEditText.getText().toString().equals("") ||
+                    contactEditText.getText().toString().equals("") ||
+                    addressEditText.getText().toString().equals("")
                 )) {
                     Log.v("LOG::::", "validation yes");
                 } else {
@@ -48,4 +62,35 @@ public class RegisterActivity extends AppCompatActivity
             }
         });
     }
+
+    protected InputFilter filterAlphaNum = new InputFilter() {
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
+           int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[a-zA-Z0-9]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
+    protected InputFilter filterSpace = new InputFilter() {
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
+                                   int dstart, int dend) {
+            Pattern ps = Pattern.compile("[^\\s]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
+    protected InputFilter filterContact = new InputFilter() {
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
+                                   int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[0-9-]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
 }
