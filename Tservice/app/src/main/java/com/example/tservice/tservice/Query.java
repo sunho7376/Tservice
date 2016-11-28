@@ -1,6 +1,7 @@
 package com.example.tservice.tservice;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -48,6 +49,8 @@ public class Query
                 sendData.add(new BasicNameValuePair("type", TYPE));
                 sendData.add(new BasicNameValuePair("query", QUERY));
 
+                Log.v("QUERY:::", "" + QUERY);
+
                 HttpEntity enty = new UrlEncodedFormEntity(sendData, HTTP.UTF_8);
                 request.setEntity(enty);
 
@@ -73,7 +76,6 @@ public class Query
                 return total;
             }catch(UnsupportedEncodingException e){
                 e.printStackTrace();
-
             }catch(IOException e){
                 e.printStackTrace();
             }

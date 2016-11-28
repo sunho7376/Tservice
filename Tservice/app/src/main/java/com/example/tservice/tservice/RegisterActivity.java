@@ -7,8 +7,10 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
@@ -23,12 +25,15 @@ public class RegisterActivity extends AppCompatActivity
     EditText addressEditText;
     Button registerBtn;
 
+    InputMethodManager imm;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         Intent intent = new Intent(this.getIntent());
+        imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
         idEditText = (EditText)findViewById(R.id.idEditText);
         pwEditText = (EditText)findViewById(R.id.pwEditText);
@@ -53,15 +58,45 @@ public class RegisterActivity extends AppCompatActivity
                     contactEditText.getText().toString().equals("") ||
                     addressEditText.getText().toString().equals("")
                 )) {
+
                     mQuery = new Query(new CallBackListener<String>(){
                         @Override
                         public void onSuccess(String value) {
-                            Log.v("LOG::::", "result : " + value);
+                            String[] flag = value.split(";");
+                            if (flag[0].equals("success")) {
+                                imm.hideSoftInputFromWindow(idEditText.getWindowToken(),0);
+                                Toast.makeText(getApplicationContext(), "중복된 아이디 입니다.",
+                                    Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                String id = idEditText.getText().toString();
+                                String pw = pwEditText.getText().toString();
+                                String name = nameEditText.getText().toString();
+                                String contact = contactEditText.getText().toString();
+                                String address = addressEditText.getText().toString();
+
+                                Query mmQuery = new Query(new CallBackListener<String>(){
+                                    @Override
+                                    public void onSuccess(String value) {
+                                        Toast.makeText(getApplicationContext(), "회원가입 되었습니다.",
+                                                Toast.LENGTH_SHORT).show();
+                                        Intent mainIntent
+                                                = new Intent(RegisterActivity.this, MainActivity.class);
+                                        startActivity(mainIntent);
+                                    }
+
+                                }, "insert"
+                                    , "insert into `user_open` (user_id, pw, name, contact, address)"
+                                    + " values ('" + id + "', '" + pw + "', '" + name + "', '"
+                                    + contact + "', '" + address + "');");
+                            }
+
                         }
+
                     }, "select", "select * from `user_open` where user_id='"
-                        + idEditText.getText().toString() + "'");
+                        + idEditText.getText().toString() + "';");
                 } else {
-                    Log.v("LOG::::", "validation no");
+                    Log.v("LOG::::", "validation error");
                 }
             }
         });

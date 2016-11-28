@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(this.getIntent());
+
         idEditText = (EditText)findViewById(R.id.idEditText);
         pwEditText = (EditText)findViewById(R.id.pwEditText);
         loginBtn = (Button)findViewById(R.id.loginBtn);
