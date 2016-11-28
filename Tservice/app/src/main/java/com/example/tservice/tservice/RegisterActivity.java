@@ -16,8 +16,6 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity
 {
-    Query mQuery;
-
     EditText idEditText;
     EditText pwEditText;
     EditText nameEditText;
@@ -25,6 +23,7 @@ public class RegisterActivity extends AppCompatActivity
     EditText addressEditText;
     Button registerBtn;
 
+    Intent intent;
     InputMethodManager imm;
 
     @Override
@@ -32,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Intent intent = new Intent(this.getIntent());
+        intent = new Intent(this.getIntent());
         imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
         idEditText = (EditText)findViewById(R.id.idEditText);
@@ -59,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity
                     addressEditText.getText().toString().equals("")
                 )) {
 
-                    mQuery = new Query(new CallBackListener<String>(){
+                    Query mQuery = new Query(new CallBackListener<String>(){
                         @Override
                         public void onSuccess(String value) {
                             String[] flag = value.split(";");
@@ -67,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity
                                 imm.hideSoftInputFromWindow(idEditText.getWindowToken(),0);
                                 Toast.makeText(getApplicationContext(), "중복된 아이디 입니다.",
                                     Toast.LENGTH_SHORT).show();
+                                //중복된 아이디로 회원가입 시 토트메시지
 
                             } else {
                                 String id = idEditText.getText().toString();
@@ -89,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity
                                     , "insert into `user_open` (user_id, pw, name, contact, address)"
                                     + " values ('" + id + "', '" + pw + "', '" + name + "', '"
                                     + contact + "', '" + address + "');");
+                                //문제 없으면 회원가입 insert query 실행 후 MainActivity로 이동
                             }
 
                         }
@@ -102,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity
         });
     }
 
+    //회원가입 입력 EditText Validation 필터들
     protected InputFilter filterAlphaNum = new InputFilter() {
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
            int dstart, int dend) {
