@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity
 {
+    Query mQuery;
+
     EditText idEditText;
     EditText pwEditText;
     EditText nameEditText;
@@ -35,14 +37,10 @@ public class RegisterActivity extends AppCompatActivity
         addressEditText = (EditText)findViewById(R.id.addressEditText);
         registerBtn = (Button)findViewById(R.id.registerBtn);
 
-        idEditText.setFilters(new InputFilter[] {filterAlphaNum});
-        idEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
-        pwEditText.setFilters(new InputFilter[] {filterAlphaNum});
-        pwEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
-        nameEditText.setFilters(new InputFilter[] {filterSpace});
-        nameEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(16)});
-        contactEditText.setFilters(new InputFilter[] {filterContact});
-        contactEditText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(20)});
+        idEditText.setFilters(new InputFilter[] {filterAlphaNum, new InputFilter.LengthFilter(20)});
+        pwEditText.setFilters(new InputFilter[] {filterAlphaNum, new InputFilter.LengthFilter(20)});
+        nameEditText.setFilters(new InputFilter[] {filterSpace, new InputFilter.LengthFilter(16)});
+        contactEditText.setFilters(new InputFilter[] {filterContact, new InputFilter.LengthFilter(20)});
         addressEditText.setFilters(new InputFilter[] {filterSpace});
 
         registerBtn.setOnClickListener(new Button.OnClickListener() {
@@ -55,7 +53,13 @@ public class RegisterActivity extends AppCompatActivity
                     contactEditText.getText().toString().equals("") ||
                     addressEditText.getText().toString().equals("")
                 )) {
-                    Log.v("LOG::::", "validation yes");
+                    mQuery = new Query(new CallBackListener<String>(){
+                        @Override
+                        public void onSuccess(String value) {
+                            Log.v("LOG::::", "result : " + value);
+                        }
+                    }, "select", "select * from `user_open` where user_id='"
+                        + idEditText.getText().toString() + "'");
                 } else {
                     Log.v("LOG::::", "validation no");
                 }
@@ -75,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity
     };
     protected InputFilter filterSpace = new InputFilter() {
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
-                                   int dstart, int dend) {
+           int dstart, int dend) {
             Pattern ps = Pattern.compile("[^\\s]+$");
             if (!ps.matcher(source).matches()) {
                 return "";
@@ -85,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity
     };
     protected InputFilter filterContact = new InputFilter() {
         public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
-                                   int dstart, int dend) {
+           int dstart, int dend) {
             Pattern ps = Pattern.compile("^[0-9-]+$");
             if (!ps.matcher(source).matches()) {
                 return "";
