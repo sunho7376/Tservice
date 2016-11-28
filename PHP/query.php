@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("server", "id", "password", "table_name");
+$mysqli = new mysqli("server", "id", "pw", "table");
 
 if ($mysqli->connect_errno) {
     die("Could not select database");
@@ -17,13 +17,17 @@ if ($type == "insert") {
 
 } else if ($type == "select") {
     if ($result->num_rows) {
-        $user = $result->fetch_array(MYSQL_ASSOC);
-
+        $data_list = array();
+        while ($data = $result->fetch_array(MYSQLI_NUM)) {
+            $data_list[] = $data;
+        }
         echo "success;";
-
-        foreach ($user as $data) {
-            echo $data;
-            echo ";";
+        foreach($data_list as $data) {
+            echo "data;";
+            foreach($data as $print) {
+                echo $print;
+                echo ";";
+            }
         }
     } else {
         echo "fail;";

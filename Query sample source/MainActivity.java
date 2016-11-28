@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity
             //value의 종류
             //insert, update, delete의 경우 query가 잘 실행되면 1 return
             //select의 경우 query가 잘 실행되면
-            // success;[pk];[id];[pw];[name];
+            //success;data;[pk];[id];[pw];[name];data;[pk];[id];[pw];[name];
             //과 같은 식의 string이 return됨
             //세미콜론(;)을 기준으로 자바 함수 split를 이용해 사용할 것
-            //select의 결과값이 없을 경우
-            // fail;
-            //의 string이 return되므로
-            //마찬가지로 split를 이용해 select query가 성공했는지 확인 가능
+            //select의 결과값이 없을 경우 fail;
+            //있을 경우 success;...
+            //데이터가 여러개일 경우 data;로 구분되므로
+            //마찬가지로 split를 이용해 구분해 사용 가능
         });
     }
 }
