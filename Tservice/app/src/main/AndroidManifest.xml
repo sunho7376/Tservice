@@ -21,6 +21,7 @@
 
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginedActivity" />
+        <activity android:name=".FixUserActivity" />
         <activity android:name=".UserAreaActivity" />
     </application>
 </manifest>

@@ -11,14 +11,18 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    EditText idEditText;
-    EditText pwEditText;
-    Button loginBtn;
-    Button registerBtn;
+    //로그인 안 됐을 때 메인 페이지
+
+    private BackPressCloseHandler backPressCloseHandler;
 
     Intent intent;
     Intent loginedIntent;
     InputMethodManager imm;
+
+    EditText idEditText;
+    EditText pwEditText;
+    Button loginBtn;
+    Button registerBtn;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         intent = new Intent(this.getIntent());
         loginedIntent = new Intent(MainActivity.this, LoginedActivity.class);
         imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        backPressCloseHandler = new BackPressCloseHandler(this);
 
         if (User.loginState) {
             startActivity(loginedIntent);
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    //App Task 끄지 않는 이상 loginedActivity로 넘어가도록
+    //App Task 끄지 않는 이상 로그인 되어있는 상태면 loginedActivity로 넘어가도록
     public void onStart() {
         super.onStart();
         if (User.loginState) {
@@ -92,5 +97,10 @@ public class MainActivity extends AppCompatActivity
         if (User.loginState) {
             startActivity(loginedIntent);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
     }
 }
