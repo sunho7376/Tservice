@@ -1,6 +1,7 @@
 package com.example.tservice.tservice;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.Toast;
 
 public class BackPressCloseHandler
@@ -21,7 +22,9 @@ public class BackPressCloseHandler
             return;
         }
         if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-            activity.finish();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            activity.startActivity(intent);
             toast.cancel();
         }
     }
