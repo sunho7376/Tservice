@@ -15,7 +15,11 @@ public class LoginedActivity extends AppCompatActivity
     Intent intent;
     Intent fixUserIntent;
 
-    Button fixUserBtn;
+    Button listBtn; //글목록 삭제 수정 등록
+    Button searchBtn; //글검색
+    Button infoBtn; //내정보보기 수정
+    Button logoutBtn; //로그아웃
+    Button fixUserBtn; //회원정보 수정
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -27,12 +31,49 @@ public class LoginedActivity extends AppCompatActivity
         backPressCloseHandler = new BackPressCloseHandler(this);
 
         fixUserBtn = (Button)findViewById(R.id.fixUserBtn);
+        listBtn = (Button)findViewById(R.id.list_btn);
+        searchBtn = (Button)findViewById(R.id.search_btn);
+        infoBtn = (Button)findViewById(R.id.user_Info);
+        logoutBtn = (Button)findViewById(R.id.logout_btn);
+
 
         fixUserBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick (View v) {
                 Intent fixUserIntent = new Intent(LoginedActivity.this, FixUserActivity.class);
                 startActivity(fixUserIntent);
+            }
+        });
+
+        listBtn.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginedActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        searchBtn.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginedActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        infoBtn.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginedActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+//오류남 좀더 보완
+        logoutBtn.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginedActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

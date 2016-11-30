@@ -18,10 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginedActivity" />
         <activity android:name=".FixUserActivity" />
         <activity android:name=".UserAreaActivity" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".InfoActivity"></activity>
     </application>
+
 </manifest>

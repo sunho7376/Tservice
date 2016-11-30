@@ -3,10 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:text="글 목록"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGIN SUCCESS!" />
+        android:id="@+id/list_btn" />
+
+    <Button
+        android:text="글 검색"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_btn" />
+
+    <Button
+        android:text="내 정보(보기, 수정)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_Info" />
 
     <Button
         android:layout_width="wrap_content"
@@ -14,4 +27,11 @@
         android:text="회원정보수정"
         android:id="@+id/fixUserBtn"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:text="로그 아웃"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout_btn" />
+
 </LinearLayout>
