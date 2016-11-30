@@ -72,8 +72,7 @@ public class LoginedActivity extends AppCompatActivity
         logoutBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginedActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
