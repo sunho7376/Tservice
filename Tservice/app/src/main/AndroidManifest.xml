@@ -23,8 +23,7 @@
         <activity android:name=".FixUserActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
