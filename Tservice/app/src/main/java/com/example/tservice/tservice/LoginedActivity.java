@@ -10,6 +10,8 @@ public class LoginedActivity extends AppCompatActivity
 {
     //로그인 된 상태일 때 실행되는 activity
 
+    private BackPressCloseHandler backPressCloseHandler;
+
     Intent intent;
     Intent fixUserIntent;
 
@@ -22,6 +24,7 @@ public class LoginedActivity extends AppCompatActivity
 
         intent = new Intent(this.getIntent());
         fixUserIntent = new Intent(LoginedActivity.this, FixUserActivity.class);
+        backPressCloseHandler = new BackPressCloseHandler(this);
 
         fixUserBtn = (Button)findViewById(R.id.fixUserBtn);
 
@@ -36,5 +39,6 @@ public class LoginedActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
     }
 }
