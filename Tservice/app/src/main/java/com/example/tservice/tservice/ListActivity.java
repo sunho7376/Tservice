@@ -33,42 +33,33 @@ import java.net.URL;
 public class ListActivity extends AppCompatActivity {
 
     TextView txtView;
-    phpdo task;
+    php task;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        //flag[0]이 뭐인지
-        Query mQuery = new Query(new CallBackListener<String>() {
-            @Override
-            public void onSuccess(String value) {
-                String[] flag = value.split(";");
-                if (flag[0].equals("success")) {
+        String id = User.userPk;
+        task = new php();
+        txtView = (TextView) findViewById(R.id.txtView);
+        task.execute(id);
 
-                    task = new phpdo();
-                    txtView = (TextView) findViewById(R.id.txtView);
-                    task.execute(flag[0]);
-                }
-            }
-        }, "select", "select * from `user_open` where user_id='user'");
     }
 
-    private class phpdo extends AsyncTask<String, Void, String> {
+    private class php extends AsyncTask<String, Void, String> {
 
         protected void onPreExecute() {
 
         }
 
         @Override
-        protected String doInBackground(String... arg0) {
+        protected String doInBackground(String... strings) {
 
             try {
-                String id = arg0[0];
+                String id = User.userPk;
 
                 String link = "http://yangjunghoon.xyz/open/query.php" + id;
-                URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
                 request.setURI(new URI(link));
