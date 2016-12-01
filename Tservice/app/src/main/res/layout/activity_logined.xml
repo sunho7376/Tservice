@@ -1,43 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
-    <Button
-        android:text="글 목록"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_btn" />
+        android:paddingBottom="5dp">
 
-    <Button
-        android:text="글 올리기"
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
+            android:text="글 목록"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_btn" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCreatePost" />
+        android:paddingBottom="5dp">
 
-    <Button
-        android:text="글 검색"
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
+            android:text="글 검색"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_btn" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_btn" />
+        android:paddingBottom="5dp">
 
-    <Button
-        android:text="내 정보(보기, 수정)"
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
+            android:text="내 정보(보기, 수정)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_Info" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/user_Info" />
+        android:paddingBottom="5dp">
 
-    <Button
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
+            android:text="로그 아웃"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/logout_btn" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원정보수정"
-        android:id="@+id/fixUserBtn"
-        android:layout_gravity="center_horizontal" />
+        android:paddingBottom="5dp">
 
-    <Button
-        android:text="로그 아웃"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/logout_btn" />
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="회원정보수정"
+            android:id="@+id/fixUserBtn"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -34,11 +34,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tviewAddress" />
-
-    <Button
-        android:text="내가 쓴 글 보기"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnMyPost" />
+        android:paddingTop="5dp">
+
+        <Button
+            android:background="#008080"
+            android:textColor="#ffffff"
+            android:text="내가 쓴 글 보기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnMyPost" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
