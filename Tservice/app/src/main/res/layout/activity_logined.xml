@@ -16,6 +16,12 @@
         android:id="@+id/search_btn" />
 
     <Button
+        android:text="글 등록"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_Ticket" />
+
+    <Button
         android:text="내 정보(보기, 수정)"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
