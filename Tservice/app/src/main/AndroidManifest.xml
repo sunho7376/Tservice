@@ -23,9 +23,9 @@
         <activity android:name=".FixUserActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".InfoActivity"/>
-        <activity android:name=".RegPostActivity"/>
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".RegPostActivity" />
+        <activity android:name=".SearchActivity" />
     </application>
 
 </manifest>

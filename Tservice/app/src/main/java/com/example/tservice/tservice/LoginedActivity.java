@@ -15,7 +15,7 @@ public class LoginedActivity extends AppCompatActivity
     Intent intent;
     Intent fixUserIntent;
 
-    Button listBtn; //글목록 삭제 수정 등록
+    Button listBtn; //글목록
     Button searchBtn; //글검색
     Button infoBtn; //내정보보기 수정
     Button logoutBtn; //로그아웃
@@ -68,6 +68,7 @@ public class LoginedActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
 //오류남 좀더 보완
         logoutBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
