@@ -26,7 +26,6 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".RegPostActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".RegisterTicketActivity"></activity>
     </application>
 
 </manifest>

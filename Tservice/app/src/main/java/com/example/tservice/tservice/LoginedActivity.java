@@ -20,7 +20,6 @@ public class LoginedActivity extends AppCompatActivity
     Button infoBtn; //내정보보기 수정
     Button logoutBtn; //로그아웃
     Button fixUserBtn; //회원정보 수정
-    Button regiTicketBtn; //티켓 등록
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class LoginedActivity extends AppCompatActivity
         fixUserIntent = new Intent(LoginedActivity.this, FixUserActivity.class);
         backPressCloseHandler = new BackPressCloseHandler(this);
 
-        regiTicketBtn =(Button)findViewById(R.id.register_Ticket);
         fixUserBtn = (Button)findViewById(R.id.fixUserBtn);
         listBtn = (Button)findViewById(R.id.list_btn);
         searchBtn = (Button)findViewById(R.id.search_btn);
@@ -71,13 +69,6 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
-        regiTicketBtn.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginedActivity.this, RegisterTicketActivity.class);
-                startActivity(intent);
-            }
-        });
 //오류남 좀더 보완
         logoutBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
