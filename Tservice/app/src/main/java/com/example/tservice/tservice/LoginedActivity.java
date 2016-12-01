@@ -16,6 +16,7 @@ public class LoginedActivity extends AppCompatActivity
     Intent fixUserIntent;
 
     Button listBtn; //글목록
+    Button btnCreatePost; // 글 올리기
     Button searchBtn; //글검색
     Button infoBtn; //내정보보기 수정
     Button logoutBtn; //로그아웃
@@ -35,6 +36,7 @@ public class LoginedActivity extends AppCompatActivity
         searchBtn = (Button)findViewById(R.id.search_btn);
         infoBtn = (Button)findViewById(R.id.user_Info);
         logoutBtn = (Button)findViewById(R.id.logout_btn);
+        btnCreatePost = (Button) findViewById(R.id.btnCreatePost);
 
 
         fixUserBtn.setOnClickListener(new Button.OnClickListener() {
@@ -74,6 +76,15 @@ public class LoginedActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnCreatePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginedActivity.this, RegPostActivity.class);
+                intent.putExtra("isCreate", true);
+                startActivity(intent);
             }
         });
     }
