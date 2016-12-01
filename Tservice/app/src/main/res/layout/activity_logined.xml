@@ -30,6 +30,21 @@
         <Button
             android:textColor="#ffffff"
             android:background="#008080"
+            android:text="글 올리기"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCreatePost" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
+
+        <Button
+            android:textColor="#ffffff"
+            android:background="#008080"
             android:text="글 검색"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
