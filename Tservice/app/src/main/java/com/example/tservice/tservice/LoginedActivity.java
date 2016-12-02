@@ -71,11 +71,14 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
-//오류남 좀더 보완
         logoutBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(LoginedActivity.this, MainActivity.class);
+                //finish();
+                User.loginState = false;
+                User.userPk = "";
+                startActivity(intent);
             }
         });
 
