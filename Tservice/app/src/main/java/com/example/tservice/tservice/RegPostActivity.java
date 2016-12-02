@@ -59,7 +59,7 @@ public class RegPostActivity extends AppCompatActivity {
 
                         }
                     }, "insert", "insert into post_open (title, name, show_datetime, place, cost, link, memo, sellout, post_datetime) " +
-                            "values (" + title + "," + perName + "," + perDate + "," + perAddress + "," + cost + "," + link + "," + memo + "," + false + "," + dateStr + ")"
+                            "values (" + title + "," + perName + "," + perDate + "," + perAddress + "," + cost + "," + link + "," + memo + "," + false + "," + dateStr + ");"
                     );
 
                     finish();

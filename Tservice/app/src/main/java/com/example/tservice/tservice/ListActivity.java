@@ -30,7 +30,53 @@ import java.util.HashMap;
 import java.util.HashMap;
 import java.net.URL;
 
+//글목록 페이지
+// listActivity_by_ns --branch test--
+
 public class ListActivity extends AppCompatActivity {
+    ListView listView;
+    TextView txtView;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list);
+
+        final Post post;
+
+        post = (Post) intent.getSerializableExtra("exectPost");
+        listView = (ListView)findViewById(R.id.ListView) ;
+
+
+
+
+        //글 표시
+        Query mQuery = new Query(new CallBackListener<String>() {
+            @Override
+            public void onSuccess(String value) {
+                String[] flag = value.split(";");
+                if (flag[0].equals("success")) {
+                    etextTitle.setText(flag[3]);
+                    etextCost.setText(flag[7]);
+                    flag[10]; //판매완료여부
+                } else {
+//                        //user primary key 문제시 user정보 초기화 + mainActivity로 돌려버림
+//                        User.userPk = "";
+//                        User.loginState= false;
+//                        startActivity(mainIntent);
+                }
+            }
+
+        }, "select", "select * from `post_open` where id='" + post.getPost_pk() + "';");
+
+
+    }
+
+}
+
+/*
+public class ListActivity extends AppCompatActivity {
+
 
     TextView txtView;
     php task;
@@ -86,6 +132,7 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 }
+*/
 //    String myJSON;
 //    private static final String TAG_RESULTS = "allTickets";
 //    private static final String TAG_TITLE = "ticketTitle";
