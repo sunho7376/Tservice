@@ -39,6 +39,7 @@ public class LoginedActivity extends AppCompatActivity
         btnCreatePost = (Button) findViewById(R.id.btnCreatePost);
 
 
+        //회원정보수정
         fixUserBtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick (View v) {
@@ -47,6 +48,7 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
+        //글목록
         listBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -55,6 +57,7 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
+        //글검색
         searchBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -63,6 +66,7 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
+        //내 정보
         infoBtn.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -82,6 +86,7 @@ public class LoginedActivity extends AppCompatActivity
             }
         });
 
+        //글 올리기
         btnCreatePost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

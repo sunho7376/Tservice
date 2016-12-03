@@ -1,5 +1,6 @@
 package com.example.tservice.tservice;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashMap;
 import java.net.URL;
+import java.util.List;
 
 //글목록 페이지
 // listActivity_by_ns --branch test--
@@ -42,7 +44,9 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        Intent intent = getIntent();
         final Post post;
+        final ArrayList<String> str = new ArrayList<String>();
 
         post = (Post) intent.getSerializableExtra("exectPost");
         listView = (ListView)findViewById(R.id.ListView) ;
@@ -56,9 +60,9 @@ public class ListActivity extends AppCompatActivity {
             public void onSuccess(String value) {
                 String[] flag = value.split(";");
                 if (flag[0].equals("success")) {
-                    etextTitle.setText(flag[3]);
-                    etextCost.setText(flag[7]);
-                    flag[10]; //판매완료여부
+                    str.add(flag[3]);    //제목
+                    str.add(flag[7]);    //가격
+                    str.add(flag[10]); //판매완료여부
                 } else {
 //                        //user primary key 문제시 user정보 초기화 + mainActivity로 돌려버림
 //                        User.userPk = "";
@@ -68,6 +72,9 @@ public class ListActivity extends AppCompatActivity {
             }
 
         }, "select", "select * from `post_open` where id='" + post.getPost_pk() + "';");
+        txtView.setText(str.get(0));
+
+
 
 
     }
