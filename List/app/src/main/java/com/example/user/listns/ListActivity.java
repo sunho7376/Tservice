@@ -25,14 +25,14 @@ public class ListActivity extends Activity {
         SQLiteDatabase db = helper.getReadableDatabase();
 
         // query method 실행
-        Cursor c = db.query("person", new String[] { "name", "age" }, null,
+        Cursor c = db.query("Post", new String[] { "title", "cost" ,"sellout"}, null,
         null, null, null, null);
 
         boolean mov = c.moveToFirst();
         while (mov) {
             TextView textView = new TextView(this);
-            textView.setText(String.format("%s : %d歳", c.getString(0),
-                    c.getInt(1)));
+            textView.setText(String.format("%s : %d원 :판매완료여부 %s ", c.getString(0),
+                    c.getInt(1),c.getString(2)));
             mov = c.moveToNext();
             layout.addView(textView);
         }
