@@ -78,5 +78,16 @@ public class MainActivityList extends AppCompatActivity {
             }
         });
 
+        //글목록
+        Button list_btn = (Button) findViewById(R.id.list_btn);
+        list_btn.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivityList.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
