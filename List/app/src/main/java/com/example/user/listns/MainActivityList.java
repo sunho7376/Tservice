@@ -25,6 +25,7 @@ public class MainActivityList extends AppCompatActivity {
 
     EditText etextTitle, etextPerName, etextPerDate, etextCost, etextPerAddress, etextLink, etextMemo;
     Button btnCreatePost, btnRemovePost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +45,11 @@ public class MainActivityList extends AppCompatActivity {
         btnCreatePost = (Button) findViewById(R.id.btnCreatePost);
         btnRemovePost = (Button) findViewById(R.id.btnRemovePost);
 
-        //글 올리기
-        btnCreatePost.setOnClickListener(new btnCreatePost() {
+        //글 올리기, db에 삽입
+        btnCreatePost.setOnClickListener(new OnClickListener() {
             //@Override
             public void onClick(View v) {
+
                 String title = etextTitle.getText().toString();
                 String perName = etextPerName.getText().toString();
                 String perDate = etextPerDate.getText().toString();
@@ -60,7 +62,8 @@ public class MainActivityList extends AppCompatActivity {
                 String sellout = "false"; //:팜매중/ true:판매완료
 
                 ContentValues insertValues = new ContentValues();
-                //insertValues.put("user_id", title);
+
+                insertValues.put("user_id", title); /////
                 insertValues.put("title", title);
                 insertValues.put("perName", perName);
                 insertValues.put("perDate", perDate);
@@ -70,7 +73,8 @@ public class MainActivityList extends AppCompatActivity {
                 insertValues.put("memo", memo);
                 insertValues.put("post_datetime", post_datetime);
                 insertValues.put("sellout", sellout);
-                long id = db.insert("Post", title, insertValues);
+
+                long id = db.insert("Post",null,insertValues);
             }
         });
 
