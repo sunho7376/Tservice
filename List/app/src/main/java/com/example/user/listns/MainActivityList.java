@@ -78,7 +78,7 @@ public class MainActivityList extends AppCompatActivity {
             }
         });
 
-        //글목록
+        // 글목록
         Button list_btn = (Button) findViewById(R.id.list_btn);
         list_btn.setOnClickListener(new OnClickListener() {
 
