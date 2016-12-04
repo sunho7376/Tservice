@@ -37,12 +37,12 @@ public class Post {
     }
 
     // post_pk 없는 constractor
-    public Post(String title, String name, String place, String show_datetime , int cost,
+    public Post(String title, String name, String show_datetime, String place, int cost,
                 String link, String memo, String sellout, String post_datetime){
         this.title = title;
         this.name = name;
-        this.place = place;
         this.show_datetime = show_datetime;
+        this.place = place;
         this.cost = cost;
         this.link = link;
         this.memo = memo;
