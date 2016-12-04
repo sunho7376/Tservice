@@ -34,10 +34,10 @@ public class MyPostAdapter extends RecyclerView.Adapter<MyPostViewHolder>{
     @Override
     public void onBindViewHolder(final MyPostViewHolder holder,final int position) {
 
-        holder.tviewTitle.setText("글 제목:" + posts.get(position).getTitle());
-        holder.tviewPerName.setText(" 공연 이름:" + posts.get(position).getName());
-        holder.tviewPerDate.setText(" 공연 날짜:" + posts.get(position).getShow_datetime());
-        holder.tviewCost.setText(" 가격:" + posts.get(position).getCost());
+        holder.tviewTitle.setText(posts.get(position).getTitle());
+        holder.tviewPerName.setText(posts.get(position).getName());
+        holder.tviewPerDate.setText(posts.get(position).getShow_datetime());
+        holder.tviewCost.setText(String.valueOf(posts.get(position).getCost()));
     }
 
     @Override

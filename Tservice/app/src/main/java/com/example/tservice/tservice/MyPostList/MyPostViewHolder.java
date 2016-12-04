@@ -23,7 +23,7 @@ public class MyPostViewHolder extends RecyclerView.ViewHolder {
 
         this.base = itemView;
         this.tviewTitle = (TextView) itemView.findViewById(R.id.tviewTitle);
-        this.tviewPerDate = (TextView) itemView.findViewById(R.id.tviewPerName);
+        this.tviewPerName = (TextView) itemView.findViewById(R.id.tviewPerName);
         this.tviewPerDate = (TextView) itemView.findViewById(R.id.tviewPerDate);
         this.tviewCost = (TextView) itemView.findViewById(R.id.tviewCost);
     }

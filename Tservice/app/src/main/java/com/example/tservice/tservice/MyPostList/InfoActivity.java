@@ -1,5 +1,7 @@
 package com.example.tservice.tservice.MyPostList;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 public class InfoActivity extends AppCompatActivity {
 
     private TextView tviewId, tviewName, tviewContact, tviewAddress;
-
+    private RecyclerView.Adapter adapter;
     private ArrayList<Post> myposts;
 
     @Override
@@ -45,19 +47,20 @@ public class InfoActivity extends AppCompatActivity {
                 String[] flag = value.split(";");
                 if (flag[0].equals("success")) {
                     int i = 0, j = 0;
-                    while (j < flag.length){
-                        myposts.add(new Post(flag[4 +(13*i)], // 글 제목
-                                flag[5 +(13*i)], // 공연 이름
-                                flag[6 +(13*i)], // 공연 날짜
-                                flag[7 +(13*i)], // 공연 장소
-                                Integer.parseInt(flag[8 +(13*i)]), // 가격
-                                flag[9 +(13*i)], // 링크
-                                flag[10 +(13*i)], // 메모
-                                flag[11 +(13*i)], // sellout
-                                flag[12 +(13*i)])); // 글 작성한 날짜)
+                    while (j < flag.length) {
+                        myposts.add(new Post(flag[4 + (13 * i)], // 글 제목
+                                flag[5 + (13 * i)], // 공연 이름
+                                flag[6 + (13 * i)], // 공연 날짜
+                                flag[7 + (13 * i)], // 공연 장소
+                                Integer.parseInt(flag[8 + (13 * i)]), // 가격
+                                flag[9 + (13 * i)], // 링크
+                                flag[10 + (13 * i)], // 메모
+                                flag[11 + (13 * i)], // sellout
+                                flag[12 + (13 * i)])); // 글 작성한 날짜)
                         i++;
-                        j = 14 +(13*i);
+                        j = 13 + (13 * i);
                     }
+                    adapter.notifyDataSetChanged();
                 } else {
                     Log.v("TESToooooooooooooo", "실패");
                 }
@@ -65,7 +68,7 @@ public class InfoActivity extends AppCompatActivity {
 
         }, "select", "select * from `post_open` where user_pk='" + User.userPk + "';");
 
-        RecyclerView.Adapter adapter = new MyPostAdapter(myposts);
+        adapter = new MyPostAdapter(myposts);
         recyclerView.setAdapter(adapter);
 //        recyclerView.smoothScrollToPosition(myposts.size() -1);
 
