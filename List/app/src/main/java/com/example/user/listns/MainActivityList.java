@@ -60,17 +60,17 @@ public class MainActivityList extends AppCompatActivity {
                 String sellout = "false"; //:팜매중/ true:판매완료
 
                 ContentValues insertValues = new ContentValues();
+                //insertValues.put("user_id", title);
                 insertValues.put("title", title);
                 insertValues.put("perName", perName);
                 insertValues.put("perDate", perDate);
                 insertValues.put("perAddress", perAddress);
-
                 insertValues.put("cost", cost);
                 insertValues.put("link", link);
                 insertValues.put("memo", memo);
                 insertValues.put("post_datetime", post_datetime);
-                insertValues.put("sellout", title);
-                long id = db.insert("Post", name, insertValues);
+                insertValues.put("sellout", sellout);
+                long id = db.insert("Post", title, insertValues);
             }
         });
 
