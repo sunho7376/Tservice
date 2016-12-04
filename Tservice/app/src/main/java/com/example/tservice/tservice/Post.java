@@ -9,16 +9,16 @@ import java.util.Date;
  */
 
 public class Post {
-    private int post_pk;
-    private String title;
-    private String name;
-    private String place;
-    private int cost;
-    private String link;
-    private String memo;
-    private boolean sellout;
-    private Date post_datetime;
-    private int buyer_pk;
+    private int post_pk; // 글 Table ID
+    private String title; // 글 제목
+    private String name; // 공연 이름
+    private String place; // 공연 장소
+    private int cost; // 공연 가격
+    private String link; // 공연 사이트 링크
+    private String memo; // 글 작성자 메모
+    private boolean sellout; // 팔이면 true, 판매중이면 false
+    private Date post_datetime; // 글 작성한 날짜
+    private int buyer_pk; // 구매자 Table ID
 
     // post_pk 있는 constractor
     public Post(int post_pk, String title, String name, String place, int cost,

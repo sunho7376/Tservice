@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RegPostActivity extends AppCompatActivity {
@@ -43,23 +45,33 @@ public class RegPostActivity extends AppCompatActivity {
             btnCreatePost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    // 날짜 포맷을 정함
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
                     String title = etextTitle.getText().toString();
                     String perName = etextPerName.getText().toString();
-                    String perDate = etextPerDate.getText().toString();
+                    Date perdate;
+                    try {
+                        perdate = sdf.parse(etextPerDate.getText().toString());
+                    } catch (ParseException e){
+                        perdate = new Date();
+                    }
+                    String perDate = sdf.format(perdate);
                     String cost = etextCost.getText().toString();
                     String perAddress = etextPerAddress.getText().toString();
                     String link = etextLink.getText().toString();
                     String memo = etextMemo.getText().toString();
                     Date nowDate = new Date();
-                    String dateStr = nowDate.toString();
+                    String dateStr = sdf.format(nowDate);
 
                     mQuery = new Query(new CallBackListener<String>(){
                         @Override
                         public void onSuccess(String value) {
-
+                            Log.v("INSERT RESULT::::::::", value);
                         }
-                    }, "insert", "insert into post_open (title, name, show_datetime, place, cost, link, memo, sellout, post_datetime) " +
-                            "values (" + title + "," + perName + "," + perDate + "," + perAddress + "," + cost + "," + link + "," + memo + "," + false + "," + dateStr + ")"
+                    }, "insert", "insert into post_open (user_pk, title, name, show_datetime, place, cost, link, memo, sellout, post_datetime) " +
+                            "values ('" + User.userPk + "', '" + title + "', '" + perName + "', '" + perDate + "', '" + perAddress + "', '" + cost + "', '" + link + "', '" + memo + "', '" + false + "', '" + dateStr + "');"
                     );
 
                     finish();
