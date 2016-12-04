@@ -25,22 +25,25 @@ public class ListActivity extends AppCompatActivity {
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
 
-        // query method 실행 (rowQqueue method)
-        ///*
-        Cursor c = db.query("Post", new String[] { "title", "cost" ,"sellout"}, null,
-        null, null, null, null);
-        //*/
+        final Cursor c;
+        try {
+            // query method 실행 (rowQqueue method)
+            ///*
+            c = db.query("Post", new String[]{"title", "cost", "sellout"}, null,
+                    null, null, null, null);
+            //*/
 
-
-        boolean mov = c.moveToFirst();
-        while (mov) {
-            TextView textView = new TextView(this);
-            textView.setText(String.format("%s : %s원 :판매완료여부 %s ", c.getString(0),
-                    c.getString(1),c.getString(2)));
-            mov = c.moveToNext();
-            layout.addView(textView);
+            boolean mov = c.moveToFirst();
+            while (mov) {
+                TextView textView = new TextView(this);
+                textView.setText(String.format("%s : %s원 :판매완료여부 %s ", c.getString(0),
+                        c.getString(1), c.getString(2)));
+                mov = c.moveToNext();
+                layout.addView(textView);
+                c.close();
+            }
+        }finally {
+            db.close();
         }
-        c.close();
-        db.close();
     }
 }
