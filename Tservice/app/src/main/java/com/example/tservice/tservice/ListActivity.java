@@ -53,7 +53,6 @@ public class ListActivity extends AppCompatActivity {
 
 
 
-
         //글 표시
         Query mQuery = new Query(new CallBackListener<String>() {
             @Override
@@ -71,7 +70,7 @@ public class ListActivity extends AppCompatActivity {
                 }
             }
 
-        }, "select", "select * from `post_open` where id='" + post.getPost_pk() + "';");
+        }, "select", "select * from `post_open`;");
         txtView.setText(str.get(0));
 
 

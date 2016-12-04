@@ -40,7 +40,6 @@ public class InfoActivity extends AppCompatActivity {
 //                    startActivity(mainIntent);
                 }
             }
-
         }, "select", "select * from `user_open` where id='" + User.userPk + "';");
 
         // 버튼을 누르면 자기가 쓴 글만 나오는 Activity로 이동
