@@ -27,7 +27,7 @@
         <activity android:name=".RegPostActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".MyPostListActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

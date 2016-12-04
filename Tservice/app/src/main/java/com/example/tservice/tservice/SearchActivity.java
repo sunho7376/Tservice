@@ -1,5 +1,6 @@
 package com.example.tservice.tservice;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -33,9 +34,10 @@ public class SearchActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String searchWord = edt.getText().toString();
 
-                mQuery = new Query(new CallBackListener<String>() {
+         mQuery = new Query(new CallBackListener<String>() {
                     @Override
                     public void onSuccess(String value) {
                         Log.v("INSERT SEARCH::::::::", value);
@@ -43,8 +45,6 @@ public class SearchActivity extends AppCompatActivity {
                 }, "insert", "insert into post_open (title) " +
                         "values ('" + searchWord + "');"
                 );
-
-                finish();
             }
         });
     }
