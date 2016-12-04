@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.tservice.tservice.InfoActivity">
+    tools:context="com.example.tservice.tservice.MyPostList.InfoActivity">
 
     <TextView
         android:text="ID:"
@@ -34,20 +34,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tviewAddress" />
-    <LinearLayout
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/myPostList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp">
-
-        <Button
-            android:background="#008080"
-            android:textColor="#ffffff"
-            android:text="내가 쓴 글 보기"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnMyPost" />
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
 
 
 </LinearLayout>
