@@ -24,7 +24,7 @@ import java.util.Date;
 public class MainActivityList extends AppCompatActivity {
 
     EditText etextTitle, etextPerName, etextPerDate, etextCost, etextPerAddress, etextLink, etextMemo;
-    Button btnCreatePost, btnRemovePost;
+    Button btnCreatePost, btnRemovePost,  list_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class MainActivityList extends AppCompatActivity {
 
         btnCreatePost = (Button) findViewById(R.id.btnCreatePost);
         btnRemovePost = (Button) findViewById(R.id.btnRemovePost);
+        list_btn = (Button) findViewById(R.id.list_btn);
 
         //글 올리기, db에 삽입
         btnCreatePost.setOnClickListener(new OnClickListener() {
@@ -75,11 +76,18 @@ public class MainActivityList extends AppCompatActivity {
                 insertValues.put("sellout", sellout);
 
                 long id = db.insert("Post",null,insertValues);
+
+                Toast.makeText(getApplicationContext(), "글 등록이 되었습니다.",
+                        Toast.LENGTH_SHORT).show();
+                /*
+                Intent mainIntent
+                        = new Intent(MainActivityList.this, MainActivityList.class);
+                startActivity(mainIntent);
+                */
             }
         });
 
         // 글목록
-        Button list_btn = (Button) findViewById(R.id.list_btn);
         list_btn.setOnClickListener(new OnClickListener() {
 
             @Override
